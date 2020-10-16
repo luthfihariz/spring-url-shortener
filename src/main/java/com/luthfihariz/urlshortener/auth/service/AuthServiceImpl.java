@@ -1,9 +1,8 @@
 package com.luthfihariz.urlshortener.auth.service;
 
-import com.luthfihariz.urlshortener.auth.JwtTokenProvider;
+import com.luthfihariz.urlshortener.auth.config.JwtTokenProvider;
 import com.luthfihariz.urlshortener.auth.dto.LoginCredentialDto;
 import com.luthfihariz.urlshortener.user.dto.SessionDto;
-import com.luthfihariz.urlshortener.user.exception.UserNotFoundException;
 import com.luthfihariz.urlshortener.user.model.User;
 import com.luthfihariz.urlshortener.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 

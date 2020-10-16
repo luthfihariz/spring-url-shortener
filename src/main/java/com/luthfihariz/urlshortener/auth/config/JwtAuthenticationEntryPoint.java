@@ -1,4 +1,4 @@
-package com.luthfihariz.urlshortener.auth;
+package com.luthfihariz.urlshortener.auth.config;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

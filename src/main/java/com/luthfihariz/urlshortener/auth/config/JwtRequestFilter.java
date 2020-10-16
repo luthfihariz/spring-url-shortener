@@ -1,8 +1,6 @@
-package com.luthfihariz.urlshortener.auth;
+package com.luthfihariz.urlshortener.auth.config;
 
 import com.luthfihariz.urlshortener.auth.service.AuthService;
-import com.luthfihariz.urlshortener.user.model.User;
-import com.luthfihariz.urlshortener.user.service.UserService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,8 +38,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
             email = jwtTokenProvider.getEmailFromToken(jwtToken);
-        } else {
-            //throw new JwtException("Auth header does not start with Bearer");
         }
 
         // check in db if email is exist
@@ -51,7 +47,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             // authentication
             if (jwtTokenProvider.validateToken(jwtToken, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                        new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword());
+                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);

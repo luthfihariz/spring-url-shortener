@@ -1,4 +1,4 @@
-package com.luthfihariz.urlshortener.auth;
+package com.luthfihariz.urlshortener.auth.config;
 
 import com.luthfihariz.urlshortener.user.model.User;
 import io.jsonwebtoken.Claims;
